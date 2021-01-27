@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++输入输出和算术运算, AO的博客">
+    <meta name="keywords" content="Switch语句, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++输入输出和算术运算 | AO的博客</title>
+    <title>Switch语句 | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++输入输出和算术运算</h1>
+                    <h1 class="description center-align post-title">Switch语句</h1>
                 </div>
             </div>
         </div>
@@ -426,21 +426,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    559
+                    374
                 </div>
                 
 
@@ -460,79 +460,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="C-的输入输出"><a href="#C-的输入输出" class="headerlink" title="C++的输入输出"></a>C++的输入输出</h2><p>C++具有两种输入和输出的运算形式，分别为<code>cin</code>、<code>scanf</code>（输入）和<code>cout</code>、<code>printf</code>（输出）。</p>
-<h3 id="cin和cout形式"><a href="#cin和cout形式" class="headerlink" title="cin和cout形式"></a>cin和cout形式</h3><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    int c;
-    while ((c &#x3D; cin.get()) !&#x3D; EOF)&#123;
-        &#x2F;&#x2F;cin.get()的返回值是int,故需要强转
-        cout &lt;&lt; (char)c;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    int sum &#x3D; 0, value &#x3D; 0;
-    while (cin &gt;&gt; value)&#123;
-        sum +&#x3D; value;
-    &#x2F;&#x2F;将输入的数据累加到一起
-    &#125;
-    cout &lt;&lt; sum;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="scanf和printf形式"><a href="#scanf和printf形式" class="headerlink" title="scanf和printf形式"></a>scanf和printf形式</h3><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-using namespace std;
-int main()&#123;
-    char c;
-    while (scanf(&quot;%c&quot;, &amp;c) !&#x3D; EOF)&#123;
-        printf(&quot;%c&quot;, c);
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>强调</strong>：</p>
+                <p>switch语句提供了一个便利的途径，让我们在若干个固定的选项中做出选择，解决了代码中出现大量的else if问题。</p>
+<h2 id="Switch语句的写法："><a href="#Switch语句的写法：" class="headerlink" title="Switch语句的写法："></a>Switch语句的写法：</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">switch(表达式)&#123; &#x2F;&#x2F;表达式的值必须是整数类型(int,char...)
+    case 常量表达式1: &#x2F;&#x2F;常量表达式必须是整数类型的常量(int,char...)
+        语句组1
+        break;
+    case 常量表达式2:
+        语句组2
+        break;
+    .....
+    case 常量表达式3:
+        语句组3
+    break;
+    default:
+        语句组n+1
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>switch语句对表达式进行判断，如果表达式的值等于常量表达式的值，则执行对应的语句组，进而执行break。程序在执行完break后，执行default及default对应的语句组。</p>
+<p><strong>【注】</strong></p>
 <ul>
-<li>输入流中不存在<code>EOF</code>，<code>EOF</code>是表示没有数据再进行输入了。</li>
-<li><code>cin</code>和<code>cout</code>的速度比<code>scanf</code>和<code>printf</code>速度慢，输入、输出数据量较大时，建议用后者。</li>
-<li>一个程序中不要同时使用<code>cin</code>和<code>scanf</code>，也不要同时使用<code>cout</code>和<code>printf</code>。</li>
+<li>如果没有写break，则不会直接跳转到default，程序会依次进行运行，直到switch语句运行结束。（至少需要写一个break，不然易引发缺陷，造成代码错误）。</li>
+<li>default可以不写，但是如果switch语句的表达式和常量表达式没有一个是对应的，则程序中的switch语言相当于没有运行。</li>
 </ul>
-<h2 id="C-的算术运算"><a href="#C-的算术运算" class="headerlink" title="C++的算术运算"></a>C++的算术运算</h2><h3 id="运算的精度"><a href="#运算的精度" class="headerlink" title="运算的精度"></a>运算的精度</h3><p>做算术运算的时候，表达式结果的值的类型，以精度高的为准。</p>
+<p><strong>例子:</strong></p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 using namespace std;
 int main()&#123;
-    int a &#x3D; 1;
-    double b &#x3D; 1.2;
-    cout &lt;&lt; a+b; &#x2F;&#x2F;打印结果为：2.2
+    int n;
+    scanf(&quot;%d&quot;, &amp;n);
+    switch (n) &#123;
+        case 1:
+            printf(&quot;Monday&quot;);
+            break;
+        case 2:
+            printf(&quot;Tuesday&quot;);
+            break;
+        case 3:
+            printf(&quot;Wednesday&quot;);
+            break;
+        case 4:
+            printf(&quot;Thursday&quot;);
+            break;
+        case 5:
+            printf(&quot;Friday&quot;);
+            break;
+        case 6:
+            printf(&quot;Saturday&quot;);
+            break;
+        case 7:
+            printf(&quot;Sunday&quot;);
+            break;
+        default:
+            printf(&quot;Illegal&quot;);
+    &#125;
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>精度大小比较：double &gt; long long &gt; int &gt; short &gt; char</p>
-<h3 id="溢出"><a href="#溢出" class="headerlink" title="溢出"></a>溢出</h3><p>在运算时，有可能出现数据过大，造成溢出现象发生。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    printf(&quot;%d\n&quot;, (2147483646 + 6)&#x2F;2); &#x2F;&#x2F;打印结果：-1073741822
-    printf(&quot;%d&quot;, 2147483646&#x2F;2 + 6&#x2F;2);&#x2F;&#x2F;打印结果：1073741826
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>解决溢出的最好的办法就是使用更高精度的数据类型</p>
-<h3 id="自增运算符"><a href="#自增运算符" class="headerlink" title="自增运算符(++)"></a>自增运算符(++)</h3><ul>
-<li>前置用法：++a； 将a的值加1，表达式的返回值为a加1后的值（先自加再返值）</li>
-<li>后置用法：a++； 将a的值加1，表达式的返回值为a加1前的值（先返值再自加）</li>
-</ul>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    int n1 &#x3D; 5, n2 &#x3D; 6;
-    n1 &#x3D; n2 ++;
-    cout &lt;&lt; n1 &lt;&lt; &quot;,&quot; &lt;&lt; n2 &lt;&lt; endl; &#x2F;&#x2F;打印结果：6，7
-    n1 &#x3D; ++ n2;
-    cout &lt;&lt; n1 &lt;&lt; &quot;,&quot; &lt;&lt; n2 &lt;&lt; endl;&#x2F;&#x2F;打印结果：8,8
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注：自减和自增同理。</p>
-
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -716,9 +697,10 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/01/27/c-c/switch/">
                     <div class="card-image">
@@ -736,9 +718,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -755,6 +737,7 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -770,7 +753,7 @@ int main()&#123;
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/01/24/c-c/c-shu-ru-shu-chu-he-suan-zhu-yun-suan/">
@@ -808,7 +791,6 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

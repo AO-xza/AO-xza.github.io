@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Switch语句</title>
+      <link href="2021/01/27/c-c/switch/"/>
+      <url>2021/01/27/c-c/switch/</url>
+      
+        <content type="html"><![CDATA[<p>switch语句提供了一个便利的途径，让我们在若干个固定的选项中做出选择，解决了代码中出现大量的else if问题。</p><h2 id="Switch语句的写法："><a href="#Switch语句的写法：" class="headerlink" title="Switch语句的写法："></a>Switch语句的写法：</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">switch(表达式)&#123; &#x2F;&#x2F;表达式的值必须是整数类型(int,char...)    case 常量表达式1: &#x2F;&#x2F;常量表达式必须是整数类型的常量(int,char...)        语句组1        break;    case 常量表达式2:        语句组2        break;    .....    case 常量表达式3:        语句组3    break;    default:        语句组n+1&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>switch语句对表达式进行判断，如果表达式的值等于常量表达式的值，则执行对应的语句组，进而执行break。程序在执行完break后，执行default及default对应的语句组。</p><p><strong>【注】</strong></p><ul><li>如果没有写break，则不会直接跳转到default，程序会依次进行运行，直到switch语句运行结束。（至少需要写一个break，不然易引发缺陷，造成代码错误）。</li><li>default可以不写，但是如果switch语句的表达式和常量表达式没有一个是对应的，则程序中的switch语言相当于没有运行。</li></ul><p><strong>例子:</strong></p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;using namespace std;int main()&#123;    int n;    scanf(&quot;%d&quot;, &amp;n);    switch (n) &#123;        case 1:            printf(&quot;Monday&quot;);            break;        case 2:            printf(&quot;Tuesday&quot;);            break;        case 3:            printf(&quot;Wednesday&quot;);            break;        case 4:            printf(&quot;Thursday&quot;);            break;        case 5:            printf(&quot;Friday&quot;);            break;        case 6:            printf(&quot;Saturday&quot;);            break;        case 7:            printf(&quot;Sunday&quot;);            break;        default:            printf(&quot;Illegal&quot;);    &#125;    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+          <category> 基础语法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C++输入输出和算术运算</title>
       <link href="2021/01/24/c-c/c-shu-ru-shu-chu-he-suan-zhu-yun-suan/"/>
       <url>2021/01/24/c-c/c-shu-ru-shu-chu-he-suan-zhu-yun-suan/</url>
