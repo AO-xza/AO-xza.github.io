@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++输入输出和算术运算, AO的博客">
+    <meta name="keywords" content="数组的算法例题, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++输入输出和算术运算 | AO的博客</title>
+    <title>数组的算法例题 | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++输入输出和算术运算</h1>
+                    <h1 class="description center-align post-title">数组的算法例题</h1>
                 </div>
             </div>
         </div>
@@ -413,8 +413,8 @@
                                 C/C++
                             </a>
                         
-                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
-                                基础语法
+                            <a href="/categories/C-C/%E7%AE%97%E6%B3%95%E9%A2%98/" class="post-category">
+                                算法题
                             </a>
                         
                     </div>
@@ -426,21 +426,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    559
+                    614
                 </div>
                 
 
@@ -460,79 +460,96 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="C-的输入输出"><a href="#C-的输入输出" class="headerlink" title="C++的输入输出"></a>C++的输入输出</h2><p>C++具有两种输入和输出的运算形式，分别为<code>cin</code>、<code>scanf</code>（输入）和<code>cout</code>、<code>printf</code>（输出）。</p>
-<h3 id="cin和cout形式"><a href="#cin和cout形式" class="headerlink" title="cin和cout形式"></a>cin和cout形式</h3><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
+                <h2 id="筛法求素数-100以内的素数"><a href="#筛法求素数-100以内的素数" class="headerlink" title="筛法求素数(100以内的素数)"></a>筛法求素数(100以内的素数)</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 using namespace std;
+#define num 100
+int isPrime[num + 5];
 int main()&#123;
-    int c;
-    while ((c &#x3D; cin.get()) !&#x3D; EOF)&#123;
-        &#x2F;&#x2F;cin.get()的返回值是int,故需要强转
-        cout &lt;&lt; (char)c;
+    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;
+        isPrime[i] &#x3D; 1;  &#x2F;&#x2F;将数组的所有数据假设为1
+    &#125;
+    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;
+        if (isPrime[i] &#x3D;&#x3D; 1) &#123;
+            for (int j &#x3D; 2 * i; j &lt;&#x3D; num; j +&#x3D; i) &#123;
+                isPrime[j] &#x3D; 0; &#x2F;&#x2F;将数组中不是素数的数据标记为0
+            &#125;
+        &#125;
+    &#125;
+    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;
+        if (isPrime[i] &#x3D;&#x3D; 1)&#123;
+            cout &lt;&lt; i &lt;&lt; &quot; &quot;; &#x2F;&#x2F;输出所有数据为1的数组下标
+        &#125;
     &#125;
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="判断星期几"><a href="#判断星期几" class="headerlink" title="判断星期几"></a>判断星期几</h2><p><strong>已知2012年1月25日是星期三，编写一个程序输入一个2012年1月25日后的日期，输出该日期是星期几（星期天输出0）</strong><br>分析2012年1月25日是星期三，那么2012年1月22日是星期日</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;输入形式：2012 03 06
+#include &lt;iostream&gt;
 using namespace std;
 int main()&#123;
-    int sum &#x3D; 0, value &#x3D; 0;
-    while (cin &gt;&gt; value)&#123;
-        sum +&#x3D; value;
-    &#x2F;&#x2F;将输入的数据累加到一起
+    int month_days[13] &#x3D; &#123;-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;
+    int year, month, day;
+    cin &gt;&gt; year &gt;&gt; month &gt;&gt; day;
+    for (int i &#x3D; 2012; i &lt; year; ++i) &#123;
+        if(i % 4 &#x3D;&#x3D; 0 &amp;&amp; i % 100 !&#x3D; 0 || i % 400 &#x3D;&#x3D; 0)&#123; &#x2F;&#x2F;判断是不是闰年
+            day +&#x3D; 366;
+        &#125; else&#123;
+            day +&#x3D; 365;
+        &#125;
     &#125;
-    cout &lt;&lt; sum;
+    if(year % 4 &#x3D;&#x3D; 0 &amp;&amp; year % 100 !&#x3D; 0 || year % 400 &#x3D;&#x3D; 0)&#123;
+        month_days[2] &#x3D; 29;
+    &#125;
+    for (int i &#x3D; 1; i &lt; month; ++i) &#123;
+        day +&#x3D; month_days[i];
+    &#125;
+    day -&#x3D; 22;
+    cout &lt;&lt; day % 7;
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="scanf和printf形式"><a href="#scanf和printf形式" class="headerlink" title="scanf和printf形式"></a>scanf和printf形式</h3><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="矩阵的乘法"><a href="#矩阵的乘法" class="headerlink" title="矩阵的乘法"></a>矩阵的乘法</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;输入形式：
+&#x2F;&#x2F;2 3
+&#x2F;&#x2F;1 1 1
+&#x2F;&#x2F;1 1 1
+&#x2F;&#x2F;3 3
+&#x2F;&#x2F;1 1 1
+&#x2F;&#x2F;1 1 1
+&#x2F;&#x2F;1 1 1
+#include &lt;iostream&gt;
 using namespace std;
 int main()&#123;
-    char c;
-    while (scanf(&quot;%c&quot;, &amp;c) !&#x3D; EOF)&#123;
-        printf(&quot;%c&quot;, c);
+    int m, n, q, w;
+    cin &gt;&gt; m &gt;&gt; n;
+    int a[m][n];
+    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n; ++j) &#123;
+            cin &gt;&gt; a[i][j];
+        &#125;
+    &#125;
+    cin &gt;&gt; q &gt;&gt; w;
+    int b[q][w];
+    for (int i &#x3D; 1; i &lt;&#x3D; q; ++i) &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;
+            cin &gt;&gt; b[i][j];
+        &#125;
+    &#125;
+    int c[100][100];
+    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;
+            c[i][j] &#x3D; 0;
+            for (int k &#x3D; 1; k &lt;&#x3D; n; ++k) &#123;
+                c[i][j] +&#x3D; a[i][k] * b[k][j];
+            &#125;
+        &#125;
+    &#125;
+    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;
+            cout &lt;&lt; c[i][j] &lt;&lt; &quot; &quot;;
+        &#125;
+        cout &lt;&lt; endl;
     &#125;
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>强调</strong>：</p>
-<ul>
-<li>输入流中不存在<code>EOF</code>，<code>EOF</code>是表示没有数据再进行输入了。</li>
-<li><code>cin</code>和<code>cout</code>的速度比<code>scanf</code>和<code>printf</code>速度慢，输入、输出数据量较大时，建议用后者。</li>
-<li>一个程序中不要同时使用<code>cin</code>和<code>scanf</code>，也不要同时使用<code>cout</code>和<code>printf</code>。</li>
-</ul>
-<h2 id="C-的算术运算"><a href="#C-的算术运算" class="headerlink" title="C++的算术运算"></a>C++的算术运算</h2><h3 id="运算的精度"><a href="#运算的精度" class="headerlink" title="运算的精度"></a>运算的精度</h3><p>做算术运算的时候，表达式结果的值的类型，以精度高的为准。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    int a &#x3D; 1;
-    double b &#x3D; 1.2;
-    cout &lt;&lt; a+b; &#x2F;&#x2F;打印结果为：2.2
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>精度大小比较：double &gt; long long &gt; int &gt; short &gt; char</p>
-<h3 id="溢出"><a href="#溢出" class="headerlink" title="溢出"></a>溢出</h3><p>在运算时，有可能出现数据过大，造成溢出现象发生。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    printf(&quot;%d\n&quot;, (2147483646 + 6)&#x2F;2); &#x2F;&#x2F;打印结果：-1073741822
-    printf(&quot;%d&quot;, 2147483646&#x2F;2 + 6&#x2F;2);&#x2F;&#x2F;打印结果：1073741826
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>解决溢出的最好的办法就是使用更高精度的数据类型</p>
-<h3 id="自增运算符"><a href="#自增运算符" class="headerlink" title="自增运算符(++)"></a>自增运算符(++)</h3><ul>
-<li>前置用法：++a； 将a的值加1，表达式的返回值为a加1后的值（先自加再返值）</li>
-<li>后置用法：a++； 将a的值加1，表达式的返回值为a加1前的值（先返值再自加）</li>
-</ul>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    int n1 &#x3D; 5, n2 &#x3D; 6;
-    n1 &#x3D; n2 ++;
-    cout &lt;&lt; n1 &lt;&lt; &quot;,&quot; &lt;&lt; n2 &lt;&lt; endl; &#x2F;&#x2F;打印结果：6，7
-    n1 &#x3D; ++ n2;
-    cout &lt;&lt; n1 &lt;&lt; &quot;,&quot; &lt;&lt; n2 &lt;&lt; endl;&#x2F;&#x2F;打印结果：8,8
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注：自减和自增同理。</p>
-
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -558,7 +575,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/01/24/c-c/c-shu-ru-shu-chu-he-suan-zhu-yun-suan/">http://example.com/2021/01/24/c-c/c-shu-ru-shu-chu-he-suan-zhu-yun-suan/</a>
+                    <a href="http://example.com/2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/">http://example.com/2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -766,17 +783,18 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/01/27/c-c/switch-yu-ju/">
+                <a href="/2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Switch语句">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="数组的算法例题">
                         
-                        <span class="card-title">Switch语句</span>
+                        <span class="card-title">数组的算法例题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -786,9 +804,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -797,14 +815,15 @@ int main()&#123;
                                     C/C++
                                 </a>
                             
-                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
-                                    基础语法
+                            <a href="/categories/C-C/%E7%AE%97%E6%B3%95%E9%A2%98/" class="post-category">
+                                    算法题
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -820,16 +839,16 @@ int main()&#123;
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/24/c-c/c-shu-ru-shu-chu-he-suan-zhu-yun-suan/">
+                <a href="/2021/01/27/c-c/c-xun-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++输入输出和算术运算">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="C++循环">
                         
-                        <span class="card-title">C++输入输出和算术运算</span>
+                        <span class="card-title">C++循环</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -840,7 +859,7 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-27
                             </span>
                         <span class="publish-author">
                             
@@ -858,7 +877,6 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>数组的算法例题</title>
+      <link href="2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/"/>
+      <url>2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/</url>
+      
+        <content type="html"><![CDATA[<h2 id="筛法求素数-100以内的素数"><a href="#筛法求素数-100以内的素数" class="headerlink" title="筛法求素数(100以内的素数)"></a>筛法求素数(100以内的素数)</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;using namespace std;#define num 100int isPrime[num + 5];int main()&#123;    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;        isPrime[i] &#x3D; 1;  &#x2F;&#x2F;将数组的所有数据假设为1    &#125;    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;        if (isPrime[i] &#x3D;&#x3D; 1) &#123;            for (int j &#x3D; 2 * i; j &lt;&#x3D; num; j +&#x3D; i) &#123;                isPrime[j] &#x3D; 0; &#x2F;&#x2F;将数组中不是素数的数据标记为0            &#125;        &#125;    &#125;    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;        if (isPrime[i] &#x3D;&#x3D; 1)&#123;            cout &lt;&lt; i &lt;&lt; &quot; &quot;; &#x2F;&#x2F;输出所有数据为1的数组下标        &#125;    &#125;    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="判断星期几"><a href="#判断星期几" class="headerlink" title="判断星期几"></a>判断星期几</h2><p><strong>已知2012年1月25日是星期三，编写一个程序输入一个2012年1月25日后的日期，输出该日期是星期几（星期天输出0）</strong><br>分析2012年1月25日是星期三，那么2012年1月22日是星期日</p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;输入形式：2012 03 06#include &lt;iostream&gt;using namespace std;int main()&#123;    int month_days[13] &#x3D; &#123;-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;    int year, month, day;    cin &gt;&gt; year &gt;&gt; month &gt;&gt; day;    for (int i &#x3D; 2012; i &lt; year; ++i) &#123;        if(i % 4 &#x3D;&#x3D; 0 &amp;&amp; i % 100 !&#x3D; 0 || i % 400 &#x3D;&#x3D; 0)&#123; &#x2F;&#x2F;判断是不是闰年            day +&#x3D; 366;        &#125; else&#123;            day +&#x3D; 365;        &#125;    &#125;    if(year % 4 &#x3D;&#x3D; 0 &amp;&amp; year % 100 !&#x3D; 0 || year % 400 &#x3D;&#x3D; 0)&#123;        month_days[2] &#x3D; 29;    &#125;    for (int i &#x3D; 1; i &lt; month; ++i) &#123;        day +&#x3D; month_days[i];    &#125;    day -&#x3D; 22;    cout &lt;&lt; day % 7;    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="矩阵的乘法"><a href="#矩阵的乘法" class="headerlink" title="矩阵的乘法"></a>矩阵的乘法</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;输入形式：&#x2F;&#x2F;2 3&#x2F;&#x2F;1 1 1&#x2F;&#x2F;1 1 1&#x2F;&#x2F;3 3&#x2F;&#x2F;1 1 1&#x2F;&#x2F;1 1 1&#x2F;&#x2F;1 1 1#include &lt;iostream&gt;using namespace std;int main()&#123;    int m, n, q, w;    cin &gt;&gt; m &gt;&gt; n;    int a[m][n];    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;        for (int j &#x3D; 1; j &lt;&#x3D; n; ++j) &#123;            cin &gt;&gt; a[i][j];        &#125;    &#125;    cin &gt;&gt; q &gt;&gt; w;    int b[q][w];    for (int i &#x3D; 1; i &lt;&#x3D; q; ++i) &#123;        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;            cin &gt;&gt; b[i][j];        &#125;    &#125;    int c[100][100];    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;            c[i][j] &#x3D; 0;            for (int k &#x3D; 1; k &lt;&#x3D; n; ++k) &#123;                c[i][j] +&#x3D; a[i][k] * b[k][j];            &#125;        &#125;    &#125;    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;            cout &lt;&lt; c[i][j] &lt;&lt; &quot; &quot;;        &#125;        cout &lt;&lt; endl;    &#125;    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C++循环</title>
       <link href="2021/01/27/c-c/c-xun-huan/"/>
       <url>2021/01/27/c-c/c-xun-huan/</url>
