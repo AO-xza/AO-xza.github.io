@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数组的算法例题, AO的博客">
+    <meta name="keywords" content="C++指针（1）, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数组的算法例题 | AO的博客</title>
+    <title>C++指针（1） | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数组的算法例题</h1>
+                    <h1 class="description center-align post-title">C++指针（1）</h1>
                 </div>
             </div>
         </div>
@@ -401,10 +401,6 @@
                                 <span class="chip bg-color">C/C++</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -417,8 +413,8 @@
                                 C/C++
                             </a>
                         
-                            <a href="/categories/C-C/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
+                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
+                                基础语法
                             </a>
                         
                     </div>
@@ -430,21 +426,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-30
+                    2021-02-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-30
+                    2021-02-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    614
+                    523
                 </div>
                 
 
@@ -464,96 +460,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="筛法求素数-100以内的素数"><a href="#筛法求素数-100以内的素数" class="headerlink" title="筛法求素数(100以内的素数)"></a>筛法求素数(100以内的素数)</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-#define num 100
-int isPrime[num + 5];
-int main()&#123;
-    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;
-        isPrime[i] &#x3D; 1;  &#x2F;&#x2F;将数组的所有数据假设为1
-    &#125;
-    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;
-        if (isPrime[i] &#x3D;&#x3D; 1) &#123;
-            for (int j &#x3D; 2 * i; j &lt;&#x3D; num; j +&#x3D; i) &#123;
-                isPrime[j] &#x3D; 0; &#x2F;&#x2F;将数组中不是素数的数据标记为0
-            &#125;
-        &#125;
-    &#125;
-    for (int i &#x3D; 2; i &lt;&#x3D; num; ++i) &#123;
-        if (isPrime[i] &#x3D;&#x3D; 1)&#123;
-            cout &lt;&lt; i &lt;&lt; &quot; &quot;; &#x2F;&#x2F;输出所有数据为1的数组下标
-        &#125;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="判断星期几"><a href="#判断星期几" class="headerlink" title="判断星期几"></a>判断星期几</h2><p><strong>已知2012年1月25日是星期三，编写一个程序输入一个2012年1月25日后的日期，输出该日期是星期几（星期天输出0）</strong><br>分析2012年1月25日是星期三，那么2012年1月22日是星期日</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;输入形式：2012 03 06
-#include &lt;iostream&gt;
+                <h2 id="指针的概念"><a href="#指针的概念" class="headerlink" title="指针的概念"></a>指针的概念</h2><p>每个变量都被存放在从某个内存地址（以字节为单位）开始的若干个字节中。“指针”表示一个内存地址，通过指正，对其指向的内存区域进行读写。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">char *p &#x3D; &amp;c;
+&#x2F;&#x2F; &amp;: 取地址运算符   &amp;x: 变量x的地址（即指向x的指针）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="指针的作用"><a href="#指针的作用" class="headerlink" title="指针的作用"></a>指针的作用</h2><p>有了指针，就有了自由访问内存空间的手段 不需要通过变量，就能对内存直接进行操作。如果<code>指针p</code>指向<code>x</code>,只需要对<code>p</code>进行加减操作，就能够访问<code>x</code>前后的内存区域。<br><strong>【注】</strong>：不同类型的指针不能直接相互赋值，需要经过强制类型转换。</p>
+<h2 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h2><ul>
+<li>两个相同类型的指针可以比较大小</li>
+<li>两个同类型的指针变量可以相加减。<code>p1 - p2 = (地址p1 - 地址p2) / sizeof(T)</code></li>
+<li>指针变量加减一个整数的结果是指针。 <code>p + n = 地址p + n * sizeof(T)</code></li>
+<li>指针可以用下标运算符<code>[]</code>表示。 <code>p[n] 等价于 *(p+n)</code><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 using namespace std;
 int main()&#123;
-    int month_days[13] &#x3D; &#123;-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;
-    int year, month, day;
-    cin &gt;&gt; year &gt;&gt; month &gt;&gt; day;
-    for (int i &#x3D; 2012; i &lt; year; ++i) &#123;
-        if(i % 4 &#x3D;&#x3D; 0 &amp;&amp; i % 100 !&#x3D; 0 || i % 400 &#x3D;&#x3D; 0)&#123; &#x2F;&#x2F;判断是不是闰年
-            day +&#x3D; 366;
-        &#125; else&#123;
-            day +&#x3D; 365;
-        &#125;
-    &#125;
-    if(year % 4 &#x3D;&#x3D; 0 &amp;&amp; year % 100 !&#x3D; 0 || year % 400 &#x3D;&#x3D; 0)&#123;
-        month_days[2] &#x3D; 29;
-    &#125;
-    for (int i &#x3D; 1; i &lt; month; ++i) &#123;
-        day +&#x3D; month_days[i];
-    &#125;
-    day -&#x3D; 22;
-    cout &lt;&lt; day % 7;
+    int *p1, *p2;
+    p1 &#x3D; (int *) 200;
+    p2 &#x3D; (int *) 100;
+    cout &lt;&lt; p1 - p2 &lt;&lt; endl; &#x2F;&#x2F; 打印结果：25
+    int n &#x3D; 4;
+    cout &lt;&lt; p1 + n - p2 &lt;&lt; endl; &#x2F;&#x2F;打印结果：29
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="矩阵的乘法"><a href="#矩阵的乘法" class="headerlink" title="矩阵的乘法"></a>矩阵的乘法</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;输入形式：
-&#x2F;&#x2F;2 3
-&#x2F;&#x2F;1 1 1
-&#x2F;&#x2F;1 1 1
-&#x2F;&#x2F;3 3
-&#x2F;&#x2F;1 1 1
-&#x2F;&#x2F;1 1 1
-&#x2F;&#x2F;1 1 1
-#include &lt;iostream&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+</ul>
+<h2 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h2><p>指向地址0的指针就是空指针，但地址0不能访问。(可以使用关键字<code>NULL</code>，<code>NULL</code>就是整数0)</p>
+<h2 id="指针和数组"><a href="#指针和数组" class="headerlink" title="指针和数组"></a>指针和数组</h2><h3 id="指针和数组之间的关系"><a href="#指针和数组之间的关系" class="headerlink" title="指针和数组之间的关系"></a>指针和数组之间的关系</h3><ul>
+<li>数组的名字是一个指针常量，指向数组的起始地址</li>
+<li>作为函数形参时，<code>T *p</code> 和 <code>T p[]</code> 等价</li>
+</ul>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><strong>交换数组的顺序</strong></p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 using namespace std;
+void Reverse(int *p, int size)&#123;
+    for (int i &#x3D; 0; i &lt; size&#x2F;2; ++i) &#123;
+        int tmp &#x3D; p[i];
+        p[i] &#x3D; p[size-1-i];
+        p[size-1-i] &#x3D; tmp;
+    &#125;
+&#125;
 int main()&#123;
-    int m, n, q, w;
-    cin &gt;&gt; m &gt;&gt; n;
-    int a[m][n];
-    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;
-        for (int j &#x3D; 1; j &lt;&#x3D; n; ++j) &#123;
-            cin &gt;&gt; a[i][j];
-        &#125;
-    &#125;
-    cin &gt;&gt; q &gt;&gt; w;
-    int b[q][w];
-    for (int i &#x3D; 1; i &lt;&#x3D; q; ++i) &#123;
-        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;
-            cin &gt;&gt; b[i][j];
-        &#125;
-    &#125;
-    int c[100][100];
-    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;
-        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;
-            c[i][j] &#x3D; 0;
-            for (int k &#x3D; 1; k &lt;&#x3D; n; ++k) &#123;
-                c[i][j] +&#x3D; a[i][k] * b[k][j];
-            &#125;
-        &#125;
-    &#125;
-    for (int i &#x3D; 1; i &lt;&#x3D; m; ++i) &#123;
-        for (int j &#x3D; 1; j &lt;&#x3D; w; ++j) &#123;
-            cout &lt;&lt; c[i][j] &lt;&lt; &quot; &quot;;
-        &#125;
-        cout &lt;&lt; endl;
+    int a[5] &#x3D; &#123;1, 2, 3, 4, 5&#125;;
+    Reverse(a, sizeof(a)&#x2F;sizeof(int));
+    for (int i &#x3D; 0; i &lt; 5; ++i) &#123;
+        cout &lt;&lt; *(a+i) &lt;&lt; &quot; &quot;;
     &#125;
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -579,7 +530,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ao-xza.github.io/2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/">https://ao-xza.github.io/2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/</a>
+                    <a href="https://ao-xza.github.io/2021/02/07/c-c/c-zhi-zhen-1/">https://ao-xza.github.io/2021/02/07/c-c/c-zhi-zhen-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,10 +570,6 @@ int main()&#123;
                             
                                 <a href="/tags/C-C/">
                                     <span class="chip bg-color">C/C++</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -791,9 +738,10 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/02/07/c-c/c-zhi-zhen-1/">
                     <div class="card-image">
@@ -811,9 +759,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -830,6 +778,7 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -848,13 +797,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/30/c-c/han-shu-de-suan-fa-li-ti/">
+                <a href="/2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="函数的算法例题">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="数组的算法例题">
                         
-                        <span class="card-title">函数的算法例题</span>
+                        <span class="card-title">数组的算法例题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

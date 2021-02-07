@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>C++指针（1）</title>
+      <link href="2021/02/07/c-c/c-zhi-zhen-1/"/>
+      <url>2021/02/07/c-c/c-zhi-zhen-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="指针的概念"><a href="#指针的概念" class="headerlink" title="指针的概念"></a>指针的概念</h2><p>每个变量都被存放在从某个内存地址（以字节为单位）开始的若干个字节中。“指针”表示一个内存地址，通过指正，对其指向的内存区域进行读写。</p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">char *p &#x3D; &amp;c;&#x2F;&#x2F; &amp;: 取地址运算符   &amp;x: 变量x的地址（即指向x的指针）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="指针的作用"><a href="#指针的作用" class="headerlink" title="指针的作用"></a>指针的作用</h2><p>有了指针，就有了自由访问内存空间的手段 不需要通过变量，就能对内存直接进行操作。如果<code>指针p</code>指向<code>x</code>,只需要对<code>p</code>进行加减操作，就能够访问<code>x</code>前后的内存区域。<br><strong>【注】</strong>：不同类型的指针不能直接相互赋值，需要经过强制类型转换。</p><h2 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h2><ul><li>两个相同类型的指针可以比较大小</li><li>两个同类型的指针变量可以相加减。<code>p1 - p2 = (地址p1 - 地址p2) / sizeof(T)</code></li><li>指针变量加减一个整数的结果是指针。 <code>p + n = 地址p + n * sizeof(T)</code></li><li>指针可以用下标运算符<code>[]</code>表示。 <code>p[n] 等价于 *(p+n)</code><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;using namespace std;int main()&#123;    int *p1, *p2;    p1 &#x3D; (int *) 200;    p2 &#x3D; (int *) 100;    cout &lt;&lt; p1 - p2 &lt;&lt; endl; &#x2F;&#x2F; 打印结果：25    int n &#x3D; 4;    cout &lt;&lt; p1 + n - p2 &lt;&lt; endl; &#x2F;&#x2F;打印结果：29    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><h2 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h2><p>指向地址0的指针就是空指针，但地址0不能访问。(可以使用关键字<code>NULL</code>，<code>NULL</code>就是整数0)</p><h2 id="指针和数组"><a href="#指针和数组" class="headerlink" title="指针和数组"></a>指针和数组</h2><h3 id="指针和数组之间的关系"><a href="#指针和数组之间的关系" class="headerlink" title="指针和数组之间的关系"></a>指针和数组之间的关系</h3><ul><li>数组的名字是一个指针常量，指向数组的起始地址</li><li>作为函数形参时，<code>T *p</code> 和 <code>T p[]</code> 等价</li></ul><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><strong>交换数组的顺序</strong></p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;using namespace std;void Reverse(int *p, int size)&#123;    for (int i &#x3D; 0; i &lt; size&#x2F;2; ++i) &#123;        int tmp &#x3D; p[i];        p[i] &#x3D; p[size-1-i];        p[size-1-i] &#x3D; tmp;    &#125;&#125;int main()&#123;    int a[5] &#x3D; &#123;1, 2, 3, 4, 5&#125;;    Reverse(a, sizeof(a)&#x2F;sizeof(int));    for (int i &#x3D; 0; i &lt; 5; ++i) &#123;        cout &lt;&lt; *(a+i) &lt;&lt; &quot; &quot;;    &#125;    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+          <category> 基础语法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数组的算法例题</title>
       <link href="2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/"/>
       <url>2021/01/30/c-c/shu-zu-de-suan-fa-li-ti/</url>
