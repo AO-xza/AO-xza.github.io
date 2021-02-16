@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="静态变量, AO的博客">
+    <meta name="keywords" content="简单排序, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>静态变量 | AO的博客</title>
+    <title>简单排序 | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">静态变量</h1>
+                    <h1 class="description center-align post-title">简单排序</h1>
                 </div>
             </div>
         </div>
@@ -387,8 +387,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C-C/">
-                                <span class="chip bg-color">C/C++</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                                <span class="chip bg-color">排序</span>
                             </a>
                         
                     </div>
@@ -399,12 +403,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C-C/" class="post-category">
-                                C/C++
-                            </a>
-                        
-                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
-                                基础语法
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -430,7 +430,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    313
+                    982
                 </div>
                 
 
@@ -450,47 +450,158 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h2><p>定义在函数内部的变量叫做局部变量<br>定义在所有函数外面的变量叫做全局变量</p>
-<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><ul>
-<li>全局变量都是静态变量。局部变量定义时如果前面加了<code>static</code>关键字,则该变量也成为静态变量。</li>
-<li>静态变量的存放地址，在整个程序运行期间，都是固定不变的。</li>
-<li>如果未明确初始化，则静态变量会自动初始化成全0（每个<code>bit</code>都是0），局部非静态变量的值则随机。</li>
-</ul>
+                <p>简单排序的量级都是 n^{2}</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>如果有N个元素需要排序，只需要找到最小的一个元素，将他与第0个位置的数据交换，然后将剩余数据按照这个方式的进行交换，直到数组正确排序</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 using namespace std;
-void Func()&#123;
-    static int n &#x3D; 4;
-    cout &lt;&lt; n &lt;&lt; endl;  &#x2F;&#x2F;打印结果 4 5 6
-    ++ n;
+void SelectionSort(int a[], int size)&#123;
+    for (int i &#x3D; 0; i &lt; size - 1; ++i) &#123;
+        int tmpMin &#x3D; i;
+        for (int j &#x3D; i+1; j &lt; size; ++j) &#123;
+            if (a[j] &lt; a[tmpMin])&#123;
+                tmpMin &#x3D; j;
+            &#125;
+        &#125;
+        int tmp &#x3D; a[i];
+        a[i] &#x3D; a[tmpMin];
+        a[tmpMin] &#x3D; tmp;
+    &#125;
 &#125;
 int main()&#123;
-    Func(); Func(); Func();
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-void Func()&#123;
-    int n &#x3D; 4;
-    cout &lt;&lt; n &lt;&lt; endl; &#x2F;&#x2F;打印结果4 4 4
-    ++ n;
-&#125;
-int main()&#123;
-    Func(); Func(); Func();
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>【注】</strong> 静态变量只初始化一次</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>将一段字符串的空格和标点全部去掉。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-int main()&#123;
-    char str[] &#x3D; &quot;Hello, Wold.&quot;;
-    char *p &#x3D; strtok(str, &quot; ,.&quot;);
-    while (p !&#x3D; NULL)&#123;
-        cout &lt;&lt; p &lt;&lt; endl; &#x2F;&#x2F;Hello 
-                           &#x2F;&#x2F;Wold
-        p &#x3D; strtok(NULL, &quot; ,.&quot;);
+    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
+    SelectionSort(arr, len);
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
     &#125;
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+void swap1(int &amp;a, int &amp;b)
+&#123;
+    int temp;
+    temp &#x3D; a;
+    a &#x3D; b;
+    b &#x3D; temp;
+&#125;
+int main()&#123;
+    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        for (int j &#x3D; i+1; j &lt; len; ++j) &#123;
+            if(arr[i] &gt; arr[j])&#123;
+                swap1(arr[i], arr[j]);
+            &#125;
+        &#125;
+    &#125;
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ul>
+<li>将整个数组分为有序的部分和无序的两个部分。前者在左边，后者在右边。</li>
+<li>开始有序的部分只有第一个元素，其余都属于无序的部分。</li>
+<li>每次取出无序部分的最左边的元素，将它加入到有序部分。</li>
+<li>直到无序的部分没有元素。<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+void InsertionSort(int a[], int size)&#123;
+    for (int i &#x3D; 1; i &lt; size; ++i) &#123;
+        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
+            if(a[j] &gt; a[i])&#123;
+                int tmp &#x3D; a[i];
+                for (int k &#x3D; i; k &gt; j; --k) &#123;
+                    a[k] &#x3D; a[k-1];
+                &#125;
+                a[j] &#x3D; tmp;
+                break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+int main()&#123;
+    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
+    InsertionSort(arr, len);
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int len &#x3D; sizeof(arr) &#x2F; sizeof(int);
+    for (int i &#x3D; 1; i &lt; len; ++i) &#123;
+        int tmp &#x3D; arr[i];
+        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
+            if (arr[j] &gt; arr[i])&#123;
+                for (int k &#x3D; i; k &gt; j; --k) &#123;
+                    arr[k] &#x3D; arr[k-1];
+                &#125;
+                arr[j] &#x3D; tmp;
+                break;
+            &#125;
+        &#125;
+    &#125;
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2></li>
+<li>将整个数组分为有序的部分和无序的两个部分。</li>
+<li>前者在右边，后者在左边 开始整个数组是无序的。</li>
+<li>有序的部分没有元素 每次使无序部分最大的元素移动到有序部分第一个元素的左边（方法：相邻的依次比较，然后进行交换）。</li>
+<li>直到无序的部分没有元素。<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+void BubbleSort(int a[], int size)&#123;
+    for (int i &#x3D; size-1; i &gt; 0; --i) &#123;
+        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
+            if(a[j] &gt; a[j+1])&#123;
+                int tmp &#x3D; a[j];
+                a[j] &#x3D; a[j+1];
+                a[j+1] &#x3D; tmp;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+int main()&#123;
+    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int len &#x3D; sizeof(arr) &#x2F; sizeof(int);
+    BubbleSort(arr, len);
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+void swap1(int &amp;a, int &amp;b)&#123;
+    int temp;
+    temp &#x3D; a;
+    a &#x3D; b;
+    b &#x3D; temp;
+&#125;
+int main()&#123;
+    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int len &#x3D; sizeof(arr) &#x2F; sizeof(int);
+    for (int i &#x3D; len - 1; i &gt; 0; --i) &#123;
+        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
+            if(arr[j] &gt; arr[j+1])&#123;
+                swap1(arr[j], arr[j+1]);
+            &#125;
+        &#125;
+    &#125;
+    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -516,7 +627,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ao-xza.github.io/2021/02/16/c-c/jing-tai-bian-liang/">https://ao-xza.github.io/2021/02/16/c-c/jing-tai-bian-liang/</a>
+                    <a href="https://ao-xza.github.io/2021/02/16/suan-fa/jian-dan-pai-xu/">https://ao-xza.github.io/2021/02/16/suan-fa/jian-dan-pai-xu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,8 +665,12 @@ int main()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C-C/">
-                                    <span class="chip bg-color">C/C++</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                                    <span class="chip bg-color">排序</span>
                                 </a>
                             
                         </div>
@@ -724,9 +839,10 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/02/16/suan-fa/jian-dan-pai-xu/">
                     <div class="card-image">
@@ -744,9 +860,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -759,6 +875,7 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -781,13 +898,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/14/c-c/c-zhi-zhen-2/">
+                <a href="/2021/02/16/c-c/jing-tai-bian-liang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="C++指针（2）">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="静态变量">
                         
-                        <span class="card-title">C++指针（2）</span>
+                        <span class="card-title">静态变量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -798,7 +915,7 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-16
                             </span>
                         <span class="publish-author">
                             
