@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="简单排序, AO的博客">
+    <meta name="keywords" content="STL, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>简单排序 | AO的博客</title>
+    <title>STL | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">简单排序</h1>
+                    <h1 class="description center-align post-title">STL</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%8E%92%E5%BA%8F/">
-                                <span class="chip bg-color">排序</span>
+                            <a href="/tags/C-C/">
+                                <span class="chip bg-color">C/C++</span>
                             </a>
                         
                     </div>
@@ -403,8 +399,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
+                            <a href="/categories/C-C/" class="post-category">
+                                C/C++
+                            </a>
+                        
+                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
+                                基础语法
                             </a>
                         
                     </div>
@@ -416,21 +416,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-16
+                    2021-02-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-16
+                    2021-02-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    982
+                    884
                 </div>
                 
 
@@ -450,157 +450,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>简单排序的量级都是 n^{2}</p>
-<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>如果有N个元素需要排序，只需要找到最小的一个元素，将他与第0个位置的数据交换，然后将剩余数据按照这个方式的进行交换，直到数组正确排序</p>
+                <p>STL： C++的标准模板库,包含一些常用的的算法和常用的数据结构，使用方便，效率较高。使用算法时，需要#include <algorithm>。</p>
+<h2 id="STL中的sort排序"><a href="#STL中的sort排序" class="headerlink" title="STL中的sort排序"></a>STL中的sort排序</h2><p>对基本类型的数组从小到大排序：sort(数组名+n1, 数组名+n2);<br>对元素类型为T的基本类型数组从大到小排序。</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-void SelectionSort(int a[], int size)&#123;
-    for (int i &#x3D; 0; i &lt; size - 1; ++i) &#123;
-        int tmpMin &#x3D; i;
-        for (int j &#x3D; i+1; j &lt; size; ++j) &#123;
-            if (a[j] &lt; a[tmpMin])&#123;
-                tmpMin &#x3D; j;
-            &#125;
-        &#125;
-        int tmp &#x3D; a[i];
-        a[i] &#x3D; a[tmpMin];
-        a[tmpMin] &#x3D; tmp;
-    &#125;
-&#125;
-int main()&#123;
-    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
-    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
-    SelectionSort(arr, len);
-    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
-        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-void swap1(int &amp;a, int &amp;b)
-&#123;
-    int temp;
-    temp &#x3D; a;
-    a &#x3D; b;
-    b &#x3D; temp;
-&#125;
-int main()&#123;
-    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
-    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
-    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
-        for (int j &#x3D; i+1; j &lt; len; ++j) &#123;
-            if(arr[i] &gt; arr[j])&#123;
-                swap1(arr[i], arr[j]);
-            &#125;
-        &#125;
-    &#125;
-    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
-        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ul>
-<li>将整个数组分为有序的部分和无序的两个部分。前者在左边，后者在右边。</li>
-<li>开始有序的部分只有第一个元素，其余都属于无序的部分。</li>
-<li>每次取出无序部分的最左边的元素，将它加入到有序部分。</li>
-<li>直到无序的部分没有元素。<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-void InsertionSort(int a[], int size)&#123;
-    for (int i &#x3D; 1; i &lt; size; ++i) &#123;
-        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
-            if(a[j] &gt; a[i])&#123;
-                int tmp &#x3D; a[i];
-                for (int k &#x3D; i; k &gt; j; --k) &#123;
-                    a[k] &#x3D; a[k-1];
-                &#125;
-                a[j] &#x3D; tmp;
-                break;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-int main()&#123;
-    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
-    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
-    InsertionSort(arr, len);
-    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
-        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
 using namespace std;
 int main()&#123;
-    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
+    int arr[] &#x3D; &#123;23, 54, 12, 75, 43, 2&#125;;
     int len &#x3D; sizeof(arr) &#x2F; sizeof(int);
-    for (int i &#x3D; 1; i &lt; len; ++i) &#123;
-        int tmp &#x3D; arr[i];
-        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
-            if (arr[j] &gt; arr[i])&#123;
-                for (int k &#x3D; i; k &gt; j; --k) &#123;
-                    arr[k] &#x3D; arr[k-1];
-                &#125;
-                arr[j] &#x3D; tmp;
-                break;
-            &#125;
-        &#125;
-    &#125;
+&#x2F;&#x2F;    sort(arr, arr+len); &#x2F;&#x2F;排序结果：2 12 23 43 54 75
+&#x2F;&#x2F;    sort(arr+2, arr+6); &#x2F;&#x2F;排序结果：23 54 2 12 43 75
+    sort(arr, arr+len, greater&lt;int&gt;()); &#x2F;&#x2F;排序结果：75 54 43 23 12 2
     for (int i &#x3D; 0; i &lt; len; ++i) &#123;
         cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
     &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>用自定义的排序规则，对然后类型T的数组排序：sort(数组名+n1, 数组名+n2, 排序规则结构名());</p>
+<p>排序规则结构的定义方式：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct 结构名&#123;
+    bool operator()(const T &amp; a1, const T &amp; a2) const &#123;
+        &#x2F;&#x2F;T：数据类型
+        &#x2F;&#x2F;若从大到小排序，则返回：a1 &gt; a2
+        &#x2F;&#x2F;若从小到大排序，则返回：a1 &lt; a2
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;cstring&gt;
+using namespace std;
+struct Student&#123;
+    char name[20];
+    int id;
+    double gpa;
+&#125;;
+Student student[] &#x3D; &#123;&#123;&quot;Tom&quot;, 23, 4.2&#125;, &#123;&quot;Jack&quot;, 34, 4.1&#125;&#125;;
+struct Rule1&#123; &#x2F;&#x2F;按照姓名从小到大排序
+    bool operator()(const Student &amp; s1, const Student &amp; s2) const &#123;
+        if(stricmp(s1.name, s2.name) &lt; 0) return true;
+        return false;
+    &#125;
+&#125;;
+struct Rule2&#123; &#x2F;&#x2F;按照id从小到大排序
+    bool operator()(const Student &amp; s1, const Student &amp; s2) const &#123;
+        return s1.id &lt; s2.id;
+    &#125;
+&#125;;
+struct Rule3&#123; &#x2F;&#x2F;按照gpa从高到低排序
+    bool operator()(const Student &amp; s1, const Student &amp; s2) const &#123;
+        return s1.gpa &lt; s2.gpa;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="STL中的二分查找算法"><a href="#STL中的二分查找算法" class="headerlink" title="STL中的二分查找算法"></a>STL中的二分查找算法</h2><p>STL提供在排好序的数组上进行二分查找的算法。</p>
+<h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><p>binary_search(数组名+n1, 数组名+n2, 值)(如果找得到元素，则输出数据为1。如果找不到元素，则输出数据为0)。<br>【注】：binary_search可以用自定义排序规则排好序、元素为任意的T类型的数组中进行二分查找。结构为：binary_search(数组名+n1, 数组名+n2, 值, 排序规则结构名())</p>
+<h3 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h3><p>T * lower_bound(数组名+n1, 数组名+n2, 值)(二分查找下界)。<br>返回一个指针T * p;  *p是查找区间下标最小的，大于等于“值”的元素。如果找不到，p指向下标为n2的元素。</p>
+<h3 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h3><p>T * upper_bound(数组名+n1, 数组名+n2, 值)(二分查找上界)。<br>返回一个指针T * p;  *p是查找区间下标最小的，大于“值”的元素。如果找不到，p指向下标为n2的元素。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+void Print(int arr[], int n)&#123;
+    for (int i &#x3D; 0; i &lt; n; ++i) &#123;
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    &#125;
+&#125;
+int main()&#123;
+    int arr[] &#x3D; &#123;34, 23, 56, 25, 12&#125;;
+    int len &#x3D; sizeof(arr)&#x2F;sizeof(int);
+    sort(arr, arr+len);
+    Print(arr, len);  &#x2F;&#x2F; 打印结果：12 23 25 34 56
+    cout &lt;&lt; endl;
+    cout &lt;&lt; binary_search(arr, arr+len, 23) &lt;&lt; endl; &#x2F;&#x2F; 打印结果：1
+    cout &lt;&lt; binary_search(arr, arr+len, 43) &lt;&lt; endl; &#x2F;&#x2F; 打印结果：0
+    int *p &#x3D; lower_bound(arr, arr+len, 23);
+    cout &lt;&lt; *p &lt;&lt; &quot;,&quot; &lt;&lt; p-arr &lt;&lt; endl; &#x2F;&#x2F;打印结果：23, 1
+    p &#x3D; upper_bound(arr, arr+len, 23);
+    cout &lt;&lt; *p &lt;&lt; endl; &#x2F;&#x2F; 打印结果：25
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2></li>
-<li>将整个数组分为有序的部分和无序的两个部分。</li>
-<li>前者在右边，后者在左边 开始整个数组是无序的。</li>
-<li>有序的部分没有元素 每次使无序部分最大的元素移动到有序部分第一个元素的左边（方法：相邻的依次比较，然后进行交换）。</li>
-<li>直到无序的部分没有元素。<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-void BubbleSort(int a[], int size)&#123;
-    for (int i &#x3D; size-1; i &gt; 0; --i) &#123;
-        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
-            if(a[j] &gt; a[j+1])&#123;
-                int tmp &#x3D; a[j];
-                a[j] &#x3D; a[j+1];
-                a[j+1] &#x3D; tmp;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-int main()&#123;
-    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
-    int len &#x3D; sizeof(arr) &#x2F; sizeof(int);
-    BubbleSort(arr, len);
-    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
-        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-void swap1(int &amp;a, int &amp;b)&#123;
-    int temp;
-    temp &#x3D; a;
-    a &#x3D; b;
-    b &#x3D; temp;
-&#125;
-int main()&#123;
-    int arr[10] &#x3D; &#123;12, 32, 13, 65, 35, 15, 45, 87, 56, 24&#125;;
-    int len &#x3D; sizeof(arr) &#x2F; sizeof(int);
-    for (int i &#x3D; len - 1; i &gt; 0; --i) &#123;
-        for (int j &#x3D; 0; j &lt; i; ++j) &#123;
-            if(arr[j] &gt; arr[j+1])&#123;
-                swap1(arr[j], arr[j+1]);
-            &#125;
-        &#125;
-    &#125;
-    for (int i &#x3D; 0; i &lt; len; ++i) &#123;
-        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
+<p>【注】：STL中的平衡二叉树数据结构。”四种排序容器”：multiset   set   multimap  map</p>
 
                 
             </div>
@@ -627,7 +552,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ao-xza.github.io/2021/02/16/suan-fa/jian-dan-pai-xu/">https://ao-xza.github.io/2021/02/16/suan-fa/jian-dan-pai-xu/</a>
+                    <a href="https://ao-xza.github.io/2021/02/17/c-c/stl/">https://ao-xza.github.io/2021/02/17/c-c/stl/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -665,12 +590,8 @@ int main()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%8E%92%E5%BA%8F/">
-                                    <span class="chip bg-color">排序</span>
+                                <a href="/tags/C-C/">
+                                    <span class="chip bg-color">C/C++</span>
                                 </a>
                             
                         </div>
@@ -839,9 +760,10 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/02/17/c-c/stl/">
                     <div class="card-image">
@@ -859,9 +781,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -878,6 +800,7 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -896,13 +819,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/16/c-c/jing-tai-bian-liang/">
+                <a href="/2021/02/16/suan-fa/jian-dan-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="静态变量">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="简单排序">
                         
-                        <span class="card-title">静态变量</span>
+                        <span class="card-title">简单排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -919,12 +842,8 @@ int main()&#123;
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C-C/" class="post-category">
-                                    C/C++
-                                </a>
-                            
-                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
-                                    基础语法
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -934,8 +853,12 @@ int main()&#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-C/">
-                        <span class="chip bg-color">C/C++</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
                 </div>
