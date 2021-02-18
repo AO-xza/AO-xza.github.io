@@ -423,14 +423,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-17
+                    2021-02-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    884
+                    887
                 </div>
                 
 
@@ -450,8 +450,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>STL： C++的标准模板库,包含一些常用的的算法和常用的数据结构，使用方便，效率较高。使用算法时，需要#include <algorithm>。</p>
-<h2 id="STL中的sort排序"><a href="#STL中的sort排序" class="headerlink" title="STL中的sort排序"></a>STL中的sort排序</h2><p>对基本类型的数组从小到大排序：sort(数组名+n1, 数组名+n2);<br>对元素类型为T的基本类型数组从大到小排序。</p>
+                <p>STL： <code>C++</code>的标准模板库,包含一些常用的的算法和常用的数据结构，使用方便，效率较高。使用算法时，需要<code>#include &lt;algorithm&gt;</code>。</p>
+<h2 id="STL中的sort排序"><a href="#STL中的sort排序" class="headerlink" title="STL中的sort排序"></a>STL中的sort排序</h2><p>对基本类型的数组从小到大排序：<code>sort(数组名+n1, 数组名+n2)</code>;<br>对元素类型为<code>T</code>的基本类型数组从大到小排序。</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
@@ -466,7 +466,7 @@ int main()&#123;
     &#125;
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>用自定义的排序规则，对然后类型T的数组排序：sort(数组名+n1, 数组名+n2, 排序规则结构名());</p>
+<p>用自定义的排序规则，对然后类型T的数组排序：<code>sort(数组名+n1, 数组名+n2, 排序规则结构名())</code>;</p>
 <p>排序规则结构的定义方式：</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">struct 结构名&#123;
     bool operator()(const T &amp; a1, const T &amp; a2) const &#123;
@@ -499,10 +499,10 @@ struct Rule3&#123; &#x2F;&#x2F;按照gpa从高到低排序
         return s1.gpa &lt; s2.gpa;
     &#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="STL中的二分查找算法"><a href="#STL中的二分查找算法" class="headerlink" title="STL中的二分查找算法"></a>STL中的二分查找算法</h2><p>STL提供在排好序的数组上进行二分查找的算法。</p>
-<h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><p>binary_search(数组名+n1, 数组名+n2, 值)(如果找得到元素，则输出数据为1。如果找不到元素，则输出数据为0)。<br>【注】：binary_search可以用自定义排序规则排好序、元素为任意的T类型的数组中进行二分查找。结构为：binary_search(数组名+n1, 数组名+n2, 值, 排序规则结构名())</p>
-<h3 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h3><p>T * lower_bound(数组名+n1, 数组名+n2, 值)(二分查找下界)。<br>返回一个指针T * p;  *p是查找区间下标最小的，大于等于“值”的元素。如果找不到，p指向下标为n2的元素。</p>
-<h3 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h3><p>T * upper_bound(数组名+n1, 数组名+n2, 值)(二分查找上界)。<br>返回一个指针T * p;  *p是查找区间下标最小的，大于“值”的元素。如果找不到，p指向下标为n2的元素。</p>
+<h2 id="STL中的二分查找算法"><a href="#STL中的二分查找算法" class="headerlink" title="STL中的二分查找算法"></a>STL中的二分查找算法</h2><p><code>STL</code>提供在排好序的数组上进行二分查找的算法。</p>
+<h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><p><code>binary_search(数组名+n1, 数组名+n2, 值)</code>(如果找得到元素，则输出数据为1。如果找不到元素，则输出数据为0)。<br>【注】：<code>binary_search</code>可以用自定义排序规则排好序、元素为任意的<code>T</code>类型的数组中进行二分查找。结构为：<code>binary_search(数组名+n1, 数组名+n2, 值, 排序规则结构名())</code></p>
+<h3 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h3><p><code>T * lower_bound(数组名+n1, 数组名+n2, 值)</code>(二分查找下界)。<br>返回一个指针<code>T * p</code>;  <code>*p</code>是查找区间下标最小的，大于等于“值”的元素。如果找不到，<code>p</code>指向下标为n2的元素。</p>
+<h3 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h3><p><code>T * upper_bound(数组名+n1, 数组名+n2, 值)</code>(二分查找上界)。<br>返回一个指针<code>T * p</code>;  <code>*p</code>是查找区间下标最小的，大于“值”的元素。如果找不到，<code>p</code>指向下标为n2的元素。</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
@@ -525,7 +525,7 @@ int main()&#123;
     cout &lt;&lt; *p &lt;&lt; endl; &#x2F;&#x2F; 打印结果：25
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>【注】：STL中的平衡二叉树数据结构。”四种排序容器”：multiset   set   multimap  map</p>
+<p>【注】：<code>STL</code>中的平衡二叉树数据结构。”四种排序容器”：<code>multiset</code>   <code>set</code>   <code>multimap</code>  <code>map</code></p>
 
                 
             </div>
