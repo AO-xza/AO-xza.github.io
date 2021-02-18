@@ -423,14 +423,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-16
+                    2021-02-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    908
+                    911
                 </div>
                 
 
@@ -502,11 +502,11 @@ int main()&#123;
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><ul>
-<li><p>使用字符串函数需要#include<cstring></p>
+<li><p>使用字符串函数需要<code>#include&lt;cstring&gt;</code></p>
 </li>
 <li><p>字符串函数都根据’\0’来判断字符串结尾</p>
 </li>
-<li><p>形参为char[]类型，则实参可以是char数组或字符串常量</p>
+<li><p>形参为<code>char[]</code>类型，则实参可以是<code>char</code>数组或字符串常量</p>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">字符串拷贝：strcpy(char[] dest, char[] src); &#x2F;&#x2F;拷贝src到dest
 字符串比较大小：int strcmp(char[] s1, char[] s2);&#x2F;&#x2F;返回0则相等
 求字符串长度：int strlen(char[] s);&#x2F;&#x2F;不算结尾的&#39;\0&#39;
@@ -519,9 +519,9 @@ for(int i &#x3D; 0; i &lt; strlen(s); ++i)&#123;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这一段代码并没有任何错误，但会影响程序的效率。</p>
 </li>
-<li><p>strlen函数的执行是需要时间的，且时间和字符串的长度成正比</p>
+<li><p><code>strlen</code>函数的执行是需要时间的，且时间和字符串的长度成正比</p>
 </li>
-<li><p>每次循环，都调用strlen函数，这是效率上的很大浪费</p>
+<li><p>每次循环，都调用<code>strlen</code>函数，这是效率上的很大浪费</p>
 </li>
 </ul>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="编写判断子串的函数"><a href="#编写判断子串的函数" class="headerlink" title="编写判断子串的函数"></a>编写判断子串的函数</h3><p><strong>如果s2不是s1的子串，返回-1</strong><br><strong>如果s2是s1是子串返回其s1第一次出现的位置</strong><br><strong>空串是任何串的子串，且出现位置为0</strong></p>
