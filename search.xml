@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>最大子列和</title>
+      <link href="2021/02/25/suan-fa/zui-da-zi-lie-he/"/>
+      <url>2021/02/25/suan-fa/zui-da-zi-lie-he/</url>
+      
+        <content type="html"><![CDATA[<p>给定N个整数的序列 {$A_{1},A_{2},…,A_{N}$} ，求函数 $f(i, j) = max$ { $0,\sum_{k = i}^{j}{A_{k}}$} 的最大值</p><h2 id="方法一：暴力算法"><a href="#方法一：暴力算法" class="headerlink" title="方法一：暴力算法"></a>方法一：暴力算法</h2><p>将每一个子列都进行计算，然后比较大小。</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include &lt;stdio.h&gt;int MaxSum1(int A[], int N)&#123;    int MaxSum &#x3D; 0;    int SubSum;    for (int i &#x3D; 0; i &lt; N; ++i) &#123;        for (int j &#x3D; i; j &lt; N; ++j) &#123;            SubSum &#x3D; 0;            for (int k &#x3D; i; k &lt;&#x3D; j; ++k) &#123;                SubSum +&#x3D; A[k];            &#125;            if (SubSum &gt; MaxSum)&#123;                MaxSum &#x3D; SubSum;            &#125;        &#125;    &#125;    return MaxSum;&#125;int main()&#123;    int arr[] &#x3D; &#123;1, -2, 3, 4, 5&#125;;    printf(&quot;%d&quot;, MaxSum1(arr, 5));    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>时间复杂度为：$T(N) = O(N^{3})$</p><h2 id="方法二：暴力算法的改进"><a href="#方法二：暴力算法的改进" class="headerlink" title="方法二：暴力算法的改进"></a>方法二：暴力算法的改进</h2><pre class="line-numbers language-C" data-language="C"><code class="language-C">int MaxSum2(int A[], int N)&#123;    int MaxSum &#x3D; 0;    int SubSum;    int i, j;    for (int i &#x3D; 0; i &lt; N; ++i) &#123;        ThisSum &#x3D; 0;        for (int j &#x3D; i; j &lt; N; ++j) &#123;            SubSum +&#x3D; A[j];            if (SubSum &gt; MaxSum)&#123;                MaxSum &#x3D; SubSum;            &#125;        &#125;    &#125;    return MaxSum;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>时间复杂度为： $T(N) = O(N^{2})$</p><h2 id="方法三：在线处理"><a href="#方法三：在线处理" class="headerlink" title="方法三：在线处理"></a>方法三：在线处理</h2><p><strong>在线</strong>：每输入一个数据就进行即时处理，在任何时候中止都能够正确得到当前数据的解。</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;int MaxSum3(int A[], int N)&#123;    int SubSum &#x3D; 0;    int MaxSum &#x3D; 0;    for (int i &#x3D; 0; i &lt; N; ++i) &#123;        SubSum +&#x3D; A[i];        if (SubSum &gt; MaxSum)&#123;            MaxSum &#x3D; SubSum;  &#x2F;&#x2F;记录当前出现过的最大子列和        &#125; else if (SubSum &lt; 0)&#123;             SubSum &#x3D; 0;  &#x2F;&#x2F;左边连续的子列和出现负数的时候，则舍去        &#125;    &#125;    return MaxSum;&#125;int main()&#123;    int arr[] &#x3D; &#123;1, -2, 3, -4, 4, 5&#125;;    printf(&quot;%d&quot;, MaxSum3(arr, 6));    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>时间复杂度是： $T(N) = O(N)$  </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构基本概念</title>
       <link href="2021/02/18/shu-ju-jie-gou/shu-ju-jie-gou-ji-ben-gai-nian/"/>
       <url>2021/02/18/shu-ju-jie-gou/shu-ju-jie-gou-ji-ben-gai-nian/</url>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构基本概念, AO的博客">
+    <meta name="keywords" content="最大子列和, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构基本概念 | AO的博客</title>
+    <title>最大子列和 | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构基本概念</h1>
+                    <h1 class="description center-align post-title">最大子列和</h1>
                 </div>
             </div>
         </div>
@@ -391,10 +391,6 @@
                                 <span class="chip bg-color">C</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -403,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -416,21 +412,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-18
+                    2021-02-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-18
+                    2021-02-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    488
+                    409
                 </div>
                 
 
@@ -450,70 +446,68 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><strong>写程序接受给定多项式在给定点x处的值</strong><br>传统算法：<br>$f(x)=a_{0}+a_{1}x + …+a_{n-1}x^{n-1} +a_{n}x^{n}$</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">double f(int n, double a[], double x)&#123;
-    int i;
-    double p &#x3D; a[0];
-    for (int i &#x3D; 1; i &lt; n; ++i) &#123;
-        p +&#x3D; (a[i] * pow(x,i));
+                <p>给定N个整数的序列 {$A_{1},A_{2},…,A_{N}$} ，求函数 $f(i, j) = max$ { $0,\sum_{k = i}^{j}{A_{k}}$} 的最大值</p>
+<h2 id="方法一：暴力算法"><a href="#方法一：暴力算法" class="headerlink" title="方法一：暴力算法"></a>方法一：暴力算法</h2><p>将每一个子列都进行计算，然后比较大小。</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include &lt;stdio.h&gt;
+int MaxSum1(int A[], int N)&#123;
+    int MaxSum &#x3D; 0;
+    int SubSum;
+    for (int i &#x3D; 0; i &lt; N; ++i) &#123;
+        for (int j &#x3D; i; j &lt; N; ++j) &#123;
+            SubSum &#x3D; 0;
+            for (int k &#x3D; i; k &lt;&#x3D; j; ++k) &#123;
+                SubSum +&#x3D; A[k];
+            &#125;
+            if (SubSum &gt; MaxSum)&#123;
+                MaxSum &#x3D; SubSum;
+            &#125;
+        &#125;
     &#125;
-    return p;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>修改算法：<br>$f(x)=a_{0}+x (a_{1}+x(…(a_{n-1}+xa_{n})…))$</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">double f(int n, double a[], double x)&#123;
-    int i;
-    double p &#x3D; a[0];
-    for (int i &#x3D; n; i &gt; 0; i--)&#123;
-        p &#x3D; a[i-1] + x*p;
-    &#125;
-    return p;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>clock()</code>:捕捉从程序开始运行到<code>clock()</code>被调用时所耗费的时间。这个时间单位是<code>clock tick</code>，即“时钟打点”。<br><code>CLK_TCK</code>：机器时钟每秒所走的时钟打点数</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
-#include&lt;time.h&gt;
-clock_t start, stop; &#x2F;&#x2F;clock_t是clock()函数返回的变量类型
-double duration; &#x2F;&#x2F;记录测试数据，以秒为单位
+    return MaxSum;
+&#125;
 int main()&#123;
-    start &#x3D; clock();
-    MyFunction();
-    stop &#x3D; clock();
-    duration &#x3D; ((double)(stop - start)) &#x2F; CLK_TCK;
+    int arr[] &#x3D; &#123;1, -2, 3, 4, 5&#125;;
+    printf(&quot;%d&quot;, MaxSum1(arr, 5));
     return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="数据结构是什么？"><a href="#数据结构是什么？" class="headerlink" title="数据结构是什么？"></a>数据结构是什么？</h2><ul>
-<li>数据对象在计算机中的组织方式<ul>
-<li>逻辑结构</li>
-<li>物理存储结构</li>
-</ul>
-</li>
-<li>数据对象必定与一系列加在其上的操作相关联</li>
-<li>完成这些操作所用的方法就是算法</li>
-</ul>
-<h2 id="抽象数据类型"><a href="#抽象数据类型" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h2><ul>
-<li>数据类型<ul>
-<li>数据对象集</li>
-<li>数据集合相关的操作集</li>
-</ul>
-</li>
-<li>抽象：描述数据类型的方法不依赖于具体实现<ul>
-<li>与存放数据的机器无关</li>
-<li>与数据存储的物理结构无关</li>
-<li>与实现操作的算法和编程语言均无关</li>
-</ul>
-</li>
-</ul>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
-<li>一个有限指令集</li>
-<li>接受一些输入（有些情况下不需要输入）</li>
-<li>产生输出</li>
-<li>一定在有限步骤之后终止</li>
-<li>每一个指令必须<ul>
-<li>有充分明确的目标，不可以有歧义</li>
-<li>计算机能处理的范围之内</li>
-<li>描述应不依赖于任何一种计算机语言以及具体实现手段</li>
-</ul>
-</li>
-</ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>时间复杂度为：$T(N) = O(N^{3})$</p>
+<h2 id="方法二：暴力算法的改进"><a href="#方法二：暴力算法的改进" class="headerlink" title="方法二：暴力算法的改进"></a>方法二：暴力算法的改进</h2><pre class="line-numbers language-C" data-language="C"><code class="language-C">int MaxSum2(int A[], int N)&#123;
+    int MaxSum &#x3D; 0;
+    int SubSum;
+    int i, j;
+    for (int i &#x3D; 0; i &lt; N; ++i) &#123;
+        ThisSum &#x3D; 0;
+        for (int j &#x3D; i; j &lt; N; ++j) &#123;
+            SubSum +&#x3D; A[j];
+            if (SubSum &gt; MaxSum)&#123;
+                MaxSum &#x3D; SubSum;
+            &#125;
+        &#125;
+    &#125;
+    return MaxSum;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>时间复杂度为： $T(N) = O(N^{2})$</p>
+<h2 id="方法三：在线处理"><a href="#方法三：在线处理" class="headerlink" title="方法三：在线处理"></a>方法三：在线处理</h2><p><strong>在线</strong>：每输入一个数据就进行即时处理，在任何时候中止都能够正确得到当前数据的解。</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+int MaxSum3(int A[], int N)&#123;
+    int SubSum &#x3D; 0;
+    int MaxSum &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; N; ++i) &#123;
+        SubSum +&#x3D; A[i];
+        if (SubSum &gt; MaxSum)&#123;
+            MaxSum &#x3D; SubSum;  &#x2F;&#x2F;记录当前出现过的最大子列和
+        &#125; else if (SubSum &lt; 0)&#123; 
+            SubSum &#x3D; 0;  &#x2F;&#x2F;左边连续的子列和出现负数的时候，则舍去
+        &#125;
+    &#125;
+    return MaxSum;
+&#125;
+int main()&#123;
+    int arr[] &#x3D; &#123;1, -2, 3, -4, 4, 5&#125;;
+    printf(&quot;%d&quot;, MaxSum3(arr, 6));
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>时间复杂度是： $T(N) = O(N)$  </p>
 
                 
             </div>
@@ -540,7 +534,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ao-xza.github.io/2021/02/18/shu-ju-jie-gou/shu-ju-jie-gou-ji-ben-gai-nian/">https://ao-xza.github.io/2021/02/18/shu-ju-jie-gou/shu-ju-jie-gou-ji-ben-gai-nian/</a>
+                    <a href="https://ao-xza.github.io/2021/02/25/suan-fa/zui-da-zi-lie-he/">https://ao-xza.github.io/2021/02/25/suan-fa/zui-da-zi-lie-he/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -580,10 +574,6 @@ int main()&#123;
                             
                                 <a href="/tags/C/">
                                     <span class="chip bg-color">C</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
                         </div>
@@ -752,9 +742,10 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/02/25/suan-fa/zui-da-zi-lie-he/">
                     <div class="card-image">
@@ -772,9 +763,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -787,6 +778,7 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -805,13 +797,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/17/c-c/stl/">
+                <a href="/2021/02/18/shu-ju-jie-gou/shu-ju-jie-gou-ji-ben-gai-nian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="STL">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="数据结构基本概念">
                         
-                        <span class="card-title">STL</span>
+                        <span class="card-title">数据结构基本概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -822,18 +814,14 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C-C/" class="post-category">
-                                    C/C++
-                                </a>
-                            
-                            <a href="/categories/C-C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-category">
-                                    基础语法
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -843,8 +831,12 @@ int main()&#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-C/">
-                        <span class="chip bg-color">C/C++</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
