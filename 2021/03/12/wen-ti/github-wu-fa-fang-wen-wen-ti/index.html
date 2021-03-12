@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="最大子列和, AO的博客">
+    <meta name="keywords" content="github无法访问解决办法, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>最大子列和 | AO的博客</title>
+    <title>github无法访问解决办法 | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">最大子列和</h1>
+                    <h1 class="description center-align post-title">github无法访问解决办法</h1>
                 </div>
             </div>
         </div>
@@ -387,8 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C</span>
+                            <a href="/tags/github/">
+                                <span class="chip bg-color">github</span>
                             </a>
                         
                     </div>
@@ -399,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
+                            <a href="/categories/%E5%85%B6%E5%AE%83/" class="post-category">
+                                其它
                             </a>
                         
                     </div>
@@ -412,21 +412,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-25
+                    2021-03-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-25
+                    2021-03-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    409
+                    145
                 </div>
                 
 
@@ -446,68 +446,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>给定N个整数的序列 {$A_{1},A_{2},…,A_{N}$} ，求函数 $f(i, j) = max$ { $0,\sum_{k = i}^{j}{A_{k}}$} 的最大值</p>
-<h2 id="方法一：暴力算法"><a href="#方法一：暴力算法" class="headerlink" title="方法一：暴力算法"></a>方法一：暴力算法</h2><p>将每一个子列都进行计算，然后比较大小。</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include &lt;stdio.h&gt;
-int MaxSum1(int A[], int N)&#123;
-    int MaxSum &#x3D; 0;
-    int SubSum;
-    for (int i &#x3D; 0; i &lt; N; ++i) &#123;
-        for (int j &#x3D; i; j &lt; N; ++j) &#123;
-            SubSum &#x3D; 0;
-            for (int k &#x3D; i; k &lt;&#x3D; j; ++k) &#123;
-                SubSum +&#x3D; A[k];
-            &#125;
-            if (SubSum &gt; MaxSum)&#123;
-                MaxSum &#x3D; SubSum;
-            &#125;
-        &#125;
-    &#125;
-    return MaxSum;
-&#125;
-int main()&#123;
-    int arr[] &#x3D; &#123;1, -2, 3, 4, 5&#125;;
-    printf(&quot;%d&quot;, MaxSum1(arr, 5));
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>时间复杂度为：$T(N) = O(N^{3})$</p>
-<h2 id="方法二：暴力算法的改进"><a href="#方法二：暴力算法的改进" class="headerlink" title="方法二：暴力算法的改进"></a>方法二：暴力算法的改进</h2><pre class="line-numbers language-C" data-language="C"><code class="language-C">int MaxSum2(int A[], int N)&#123;
-    int MaxSum &#x3D; 0;
-    int SubSum;
-    int i, j;
-    for (int i &#x3D; 0; i &lt; N; ++i) &#123;
-        ThisSum &#x3D; 0;
-        for (int j &#x3D; i; j &lt; N; ++j) &#123;
-            SubSum +&#x3D; A[j];
-            if (SubSum &gt; MaxSum)&#123;
-                MaxSum &#x3D; SubSum;
-            &#125;
-        &#125;
-    &#125;
-    return MaxSum;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>时间复杂度为： $T(N) = O(N^{2})$</p>
-<h2 id="方法三：在线处理"><a href="#方法三：在线处理" class="headerlink" title="方法三：在线处理"></a>方法三：在线处理</h2><p><strong>在线</strong>：每输入一个数据就进行即时处理，在任何时候中止都能够正确得到当前数据的解。</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
-int MaxSum3(int A[], int N)&#123;
-    int SubSum &#x3D; 0;
-    int MaxSum &#x3D; 0;
-    for (int i &#x3D; 0; i &lt; N; ++i) &#123;
-        SubSum +&#x3D; A[i];
-        if (SubSum &gt; MaxSum)&#123;
-            MaxSum &#x3D; SubSum;  &#x2F;&#x2F;记录当前出现过的最大子列和
-        &#125; else if (SubSum &lt; 0)&#123; 
-            SubSum &#x3D; 0;  &#x2F;&#x2F;左边连续的子列和出现负数的时候，则舍去
-        &#125;
-    &#125;
-    return MaxSum;
-&#125;
-int main()&#123;
-    int arr[] &#x3D; &#123;1, -2, 3, -4, 4, 5&#125;;
-    printf(&quot;%d&quot;, MaxSum3(arr, 6));
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>时间复杂度是： $T(N) = O(N)$  </p>
+                <p><strong>在Windows下万能解决办法</strong><br>通过修改<code>DNS</code>地址直接解决无法访问<code>github</code>和<code>.github.io</code>的问题</p>
+<p>以<code>windows10</code>为例：</p>
+<ul>
+<li>第一步：打开控制面板</li>
+<li>第二步：选择网络与Internet设置</li>
+<li>第三步：进入网络共享中心</li>
+<li>第四步：点击连接的网络</li>
+<li>第五步：选择属性</li>
+<li>第六步：双击Internet协议版本 4（TCP/IPv4）</li>
+<li>第七步：将DNS服务器地址设为 <code>114.114.114.114</code> 和 <code>8.8.8.8</code>保存</li>
+</ul>
+<p>【补充】：</p>
+<ul>
+<li>谷歌DNS：<code>8.8.8.8</code></li>
+<li>百度DNS：<code>180.76.76.76</code></li>
+<li>阿里DNS：<code>223.5.5.5</code></li>
+<li>114DNS： <code>114.114.114.114</code> </li>
+</ul>
 
                 
             </div>
@@ -534,7 +490,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ao-xza.github.io/2021/02/25/suan-fa/zui-da-zi-lie-he/">https://ao-xza.github.io/2021/02/25/suan-fa/zui-da-zi-lie-he/</a>
+                    <a href="https://ao-xza.github.io/2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/">https://ao-xza.github.io/2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -572,8 +528,8 @@ int main()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C</span>
+                                <a href="/tags/github/">
+                                    <span class="chip bg-color">github</span>
                                 </a>
                             
                         </div>
@@ -742,9 +698,10 @@ int main()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/">
                     <div class="card-image">
@@ -762,9 +719,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -777,6 +734,7 @@ int main()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -795,13 +753,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/18/shu-ju-jie-gou/shu-ju-jie-gou-ji-ben-gai-nian/">
+                <a href="/2021/02/25/suan-fa/zui-da-zi-lie-he/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="数据结构基本概念">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="最大子列和">
                         
-                        <span class="card-title">数据结构基本概念</span>
+                        <span class="card-title">最大子列和</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -812,14 +770,14 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -831,10 +789,6 @@ int main()&#123;
                     
                     <a href="/tags/C/">
                         <span class="chip bg-color">C</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
@@ -965,13 +919,6 @@ int main()&#123;
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 

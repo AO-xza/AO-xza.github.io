@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>github无法访问解决办法</title>
+      <link href="2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/"/>
+      <url>2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<p><strong>在Windows下万能解决办法</strong><br>通过修改<code>DNS</code>地址直接解决无法访问<code>github</code>和<code>.github.io</code>的问题</p><p>以<code>windows10</code>为例：</p><ul><li>第一步：打开控制面板</li><li>第二步：选择网络与Internet设置</li><li>第三步：进入网络共享中心</li><li>第四步：点击连接的网络</li><li>第五步：选择属性</li><li>第六步：双击Internet协议版本 4（TCP/IPv4）</li><li>第七步：将DNS服务器地址设为 <code>114.114.114.114</code> 和 <code>8.8.8.8</code>保存</li></ul><p>【补充】：</p><ul><li>谷歌DNS：<code>8.8.8.8</code></li><li>百度DNS：<code>180.76.76.76</code></li><li>阿里DNS：<code>223.5.5.5</code></li><li>114DNS： <code>114.114.114.114</code> </li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>最大子列和</title>
       <link href="2021/02/25/suan-fa/zui-da-zi-lie-he/"/>
       <url>2021/02/25/suan-fa/zui-da-zi-lie-he/</url>
