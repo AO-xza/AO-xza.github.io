@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>关于static的题</title>
+      <link href="2021/03/17/wen-ti/static/"/>
+      <url>2021/03/17/wen-ti/static/</url>
+      
+        <content type="html"><![CDATA[<p>下面代码打印结果为：</p><pre class="line-numbers language-none"><code class="language-none">#include&lt;stdio.h&gt;int square(int i)&#123;    return i * i;&#125;int main()&#123;    int i &#x3D; 0;    i &#x3D; square(i);    for (; i &lt; 3; ++i) &#123;        static int i &#x3D; 1;        i +&#x3D; square(i);        printf(&quot;%d,&quot;, i);    &#125;    printf(&quot;%d\n&quot;, i);    return 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>【答】：打印结果为2、6、42、3<br>解释：for循环内打印结果为2、6、42，循环结束打印结果3。<br><strong>【注】static：静态变量，表面函数体内部的i与外部的i（全局变量）互不影响。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> -[其它] </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -C </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>github无法访问解决办法</title>
       <link href="2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/"/>
       <url>2021/03/12/wen-ti/github-wu-fa-fang-wen-wen-ti/</url>
