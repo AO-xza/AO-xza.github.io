@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu和win10时间不同步问题, AO的博客">
+    <meta name="keywords" content="Ubuntu安装jdk的方法, AO的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Ubuntu和win10时间不同步问题 | AO的博客</title>
+    <title>Ubuntu安装jdk的方法 | AO的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Ubuntu和win10时间不同步问题</h1>
+                    <h1 class="description center-align post-title">Ubuntu安装jdk的方法</h1>
                 </div>
             </div>
         </div>
@@ -387,8 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Ubuntu/">
+                                <span class="chip bg-color">Ubuntu</span>
                             </a>
                         
                     </div>
@@ -399,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                系统
+                            <a href="/categories/%E5%85%B6%E5%AE%83/" class="post-category">
+                                其它
                             </a>
                         
                     </div>
@@ -412,21 +412,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-04-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-04-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    86
+                    161
                 </div>
                 
 
@@ -446,13 +446,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Ubuntu和win10时间不同步的原因"><a href="#Ubuntu和win10时间不同步的原因" class="headerlink" title="Ubuntu和win10时间不同步的原因"></a>Ubuntu和win10时间不同步的原因</h2><p>win10的BIOS时间使用的是北京时间，Ubuntu的BIOS时间使用的是世界协调时间。二者相差八个小时。</p>
-<h2 id="在ubuntu上解决时间不同步问题"><a href="#在ubuntu上解决时间不同步问题" class="headerlink" title="在ubuntu上解决时间不同步问题"></a>在ubuntu上解决时间不同步问题</h2><ul>
-<li>在ubuntu上安装ntpdate<pre class="line-numbers language-ubuntu" data-language="ubuntu"><code class="language-ubuntu">sudo apt install ntpdate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>设置同步win10时间<pre class="line-numbers language-ubuntu" data-language="ubuntu"><code class="language-ubuntu">sudo ntpdate time.windows.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>把时间更新到硬件<pre class="line-numbers language-ubuntu" data-language="ubuntu"><code class="language-ubuntu">sudo hwclock --localtime --systohc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-
+                <p>本次安装jdk选择的安装方式为在官网下载安装包后进行手动安装。<br><strong>创建安装目录</strong></p>
+<pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">sudo mkdir &#x2F;usr&#x2F;lib&#x2F;jvm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>将压缩包解压到该路径</strong></p>
+<pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">sudo tar -zxvf jdk-8u281-linux-x64.tar.gz -C &#x2F;usr&#x2F;lib&#x2F;jvm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>修改环境变量</strong><br>打开文件</p>
+<pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">sudo vi ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>并在文件后加入</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">#set oracle jdk environment
+export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.8.0_281
+export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  
+export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  
+export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使环境变量生效</p>
+<pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">source ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>检验jdk是否安装成功</strong><br>查看java版本</p>
+<pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">java -version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -478,7 +487,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ao-xza.github.io/2021/03/20/wen-ti/ubuntu-he-win10-shi-jian-bu-tong-bu/">https://ao-xza.github.io/2021/03/20/wen-ti/ubuntu-he-win10-shi-jian-bu-tong-bu/</a>
+                    <a href="https://ao-xza.github.io/2021/04/14/wen-ti/ubuntu-an-zhuang-jdk-fang-fa/">https://ao-xza.github.io/2021/04/14/wen-ti/ubuntu-an-zhuang-jdk-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -516,8 +525,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Ubuntu/">
+                                    <span class="chip bg-color">Ubuntu</span>
                                 </a>
                             
                         </div>
@@ -686,9 +695,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/14/wen-ti/ubuntu-an-zhuang-jdk-fang-fa/">
                     <div class="card-image">
@@ -706,9 +716,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -721,6 +731,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -739,13 +750,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/17/wen-ti/static/">
+                <a href="/2021/03/20/wen-ti/ubuntu-he-win10-shi-jian-bu-tong-bu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="关于static的题">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Ubuntu和win10时间不同步问题">
                         
-                        <span class="card-title">关于static的题</span>
+                        <span class="card-title">Ubuntu和win10时间不同步问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -756,14 +767,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%85%B6%E5%AE%83/" class="post-category">
-                                    其它
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    系统
                                 </a>
                             
                             
@@ -773,8 +784,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ubuntu安装jdk的方法</title>
+      <link href="2021/04/14/wen-ti/ubuntu-an-zhuang-jdk-fang-fa/"/>
+      <url>2021/04/14/wen-ti/ubuntu-an-zhuang-jdk-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<p>本次安装jdk选择的安装方式为在官网下载安装包后进行手动安装。<br><strong>创建安装目录</strong></p><pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">sudo mkdir &#x2F;usr&#x2F;lib&#x2F;jvm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>将压缩包解压到该路径</strong></p><pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">sudo tar -zxvf jdk-8u281-linux-x64.tar.gz -C &#x2F;usr&#x2F;lib&#x2F;jvm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>修改环境变量</strong><br>打开文件</p><pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">sudo vi ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>并在文件后加入</p><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">#set oracle jdk environmentexport JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.8.0_281export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>使环境变量生效</p><pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">source ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>检验jdk是否安装成功</strong><br>查看java版本</p><pre class="line-numbers language-Ubuntu" data-language="Ubuntu"><code class="language-Ubuntu">java -version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu和win10时间不同步问题</title>
       <link href="2021/03/20/wen-ti/ubuntu-he-win10-shi-jian-bu-tong-bu/"/>
       <url>2021/03/20/wen-ti/ubuntu-he-win10-shi-jian-bu-tong-bu/</url>
